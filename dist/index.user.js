@@ -1,12 +1,10 @@
 // ==UserScript==
 // @name        Copy URL Link
 // @namespace   https://github.com/nickburrows/userscript-copy-link
-// @description This is a userscript.
+// @description 一個用來複製連結網址的userscript
 // @match       *://*/*
-// @version     0.0.16
+// @version     0.0.17
 // @author      Nick Lin
-// @require     https://cdn.jsdelivr.net/combine/npm/@violentmonkey/dom@2,npm/@violentmonkey/ui@0.7
-// @require     https://cdn.jsdelivr.net/npm/@violentmonkey/dom@2/dist/solid.js
 // @grant       GM_notification
 // @grant       GM_setClipboard
 // ==/UserScript==
