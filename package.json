@@ -1,6 +1,6 @@
 {
   "name": "userscript-copy-link",
-  "version": "0.0.25",
+  "version": "0.0.26",
   "description": "一個用來複製網址連結的userscript",
   "author": "Nick Lin",
   "license": "MIT",
