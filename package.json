@@ -1,6 +1,6 @@
 {
   "name": "userscript-copy-link",
-  "version": "0.0.24",
+  "version": "0.0.25",
   "description": "一個用來複製網址連結的userscript",
   "author": "Nick Lin",
   "license": "MIT",
@@ -14,9 +14,9 @@
     "clean": "del-cli dist",
     "lint": "eslint --ext .ts,.tsx .",
     "ci": "run-s lint",
-    "build:version": "yarn version --patch",
+    "build:version": "yarn version --patch && cross-env NODE_ENV=production run-s ci clean build:js",
     "build:js": "rollup -c",
-    "build": "yarn version --patch && cross-env NODE_ENV=production run-s ci clean build:js"
+    "build": "cross-env NODE_ENV=production run-s ci clean build:js"
   },
   "dependencies": {
     "@babel/runtime": "^7.22.10",
