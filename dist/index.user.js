@@ -4,9 +4,10 @@
 // @description 一個用來複製連結網址的userscript
 // @match       *://*/*
 // @inject-into content
-// @version     0.0.33
+// @version     0.0.34
 // @author      Nick Lin
 // @icon        https://raw.githubusercontent.com/nickburrows/userscript-copy-link/e8f248af59bea72aeb08ded7743765ac1d6801ef/static/icon_32.png
+// @updateURL   https://github.com/nickburrows/userscript-copy-link/raw/main/dist/index.user.js
 // @grant       GM.setClipboard
 // ==/UserScript==
 

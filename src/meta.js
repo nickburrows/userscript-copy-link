@@ -8,6 +8,7 @@
 // @version     process.env.VERSION
 // @author      process.env.AUTHOR
 // @icon        https://raw.githubusercontent.com/nickburrows/userscript-copy-link/e8f248af59bea72aeb08ded7743765ac1d6801ef/static/icon_32.png
+// @updateURL   https://github.com/nickburrows/userscript-copy-link/raw/main/dist/index.user.js
 // ==/UserScript==
 
 /**
