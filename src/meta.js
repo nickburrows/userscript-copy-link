@@ -3,8 +3,8 @@
 // @namespace   https://github.com/nickburrows/userscript-copy-link
 // @description 一個用來複製連結網址的userscript
 // @match       *://*/*
+// @inject-into content
 // @grant       GM.setClipboard
-// @grant       GM.notification
 // @version     process.env.VERSION
 // @author      process.env.AUTHOR
 // @icon        https://raw.githubusercontent.com/nickburrows/userscript-copy-link/e8f248af59bea72aeb08ded7743765ac1d6801ef/static/icon_32.png

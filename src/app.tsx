@@ -15,11 +15,12 @@ window.addEventListener('load', () => {
   }
 
   const linkElements = document.getElementsByTagName('a');
+
   for (const link of linkElements) {
     link.addEventListener(
       'mouseover',
-      () => {
-        hoveredLink = findNearestLink(link);
+      (event) => {
+        hoveredLink = findNearestLink(event.target);
       },
       evOpts,
     );
@@ -32,18 +33,12 @@ window.addEventListener('load', () => {
     );
   }
 
-  function eventKeyDown(ev) {
-    if ((ev.metaKey || ev.ctrlKey) && ev.key === 'c') {
+  function eventKeyDown(event) {
+    const keyName = event.key;
+
+    if ((event.ctrlKey || event.metaKey) && keyName === 'c') {
       if (hoveredLink !== null) {
         GM.setClipboard(hoveredLink);
-        GM.notification({
-          text: hoveredLink,
-          title: '複製完成!',
-          timeout: 2000,
-          // ondone: function () {
-          //   console.log('Link Copied!', hoveredLink);
-          // },
-        });
       }
     }
   }
