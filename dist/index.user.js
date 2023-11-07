@@ -4,7 +4,7 @@
 // @description 一個用來複製連結網址的userscript
 // @match       *://*/*
 // @inject-into content
-// @version     0.0.34
+// @version     0.0.40
 // @author      Nick Lin
 // @icon        https://raw.githubusercontent.com/nickburrows/userscript-copy-link/e8f248af59bea72aeb08ded7743765ac1d6801ef/static/icon_32.png
 // @updateURL   https://github.com/nickburrows/userscript-copy-link/raw/main/dist/index.user.js
@@ -40,8 +40,11 @@ window.addEventListener('load', () => {
   }
   function eventKeyDown(event) {
     const keyName = event.key;
-    if ((event.ctrlKey || event.metaKey) && keyName === 'c') {
-      if (hoveredLink !== null) {
+    if (keyName === 'Control' || keyName === 'Meta') {
+      return;
+    }
+    if (event.ctrlKey || event.metaKey) {
+      if (keyName === 'c' && hoveredLink !== null) {
         GM.setClipboard(hoveredLink);
       }
     }

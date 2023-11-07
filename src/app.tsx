@@ -35,9 +35,11 @@ window.addEventListener('load', () => {
 
   function eventKeyDown(event) {
     const keyName = event.key;
-
-    if ((event.ctrlKey || event.metaKey) && keyName === 'c') {
-      if (hoveredLink !== null) {
+    if (keyName === 'Control' || keyName === 'Meta') {
+      return;
+    }
+    if (event.ctrlKey || event.metaKey) {
+      if (keyName === 'c' && hoveredLink !== null) {
         GM.setClipboard(hoveredLink);
       }
     }
