@@ -2,25 +2,12 @@ window.addEventListener('load', () => {
   const evOpts = { capture: true, passive: true };
   let hoveredLink = null;
 
-  function findNearestLink(element) {
-    if (!element) {
-      return null;
-    }
-
-    if (element.tagName === 'A') {
-      return element.href;
-    }
-
-    return findNearestLink(element.href);
-  }
-
   const linkElements = document.getElementsByTagName('a');
-
   for (const link of linkElements) {
     link.addEventListener(
-      'mouseover',
-      (event) => {
-        hoveredLink = findNearestLink(event.target);
+      'mouseenter',
+      () => {
+        hoveredLink = link;
       },
       evOpts,
     );
@@ -33,14 +20,11 @@ window.addEventListener('load', () => {
     );
   }
 
-  function eventKeyDown(event) {
-    const keyName = event.key;
-    if (keyName === 'Control' || keyName === 'Meta') {
-      return;
-    }
-    if (event.ctrlKey || event.metaKey) {
-      if (keyName === 'c' && hoveredLink !== null) {
-        GM.setClipboard(hoveredLink);
+  function eventKeyDown(ev) {
+    if (hoveredLink && (ev.metaKey || ev.ctrlKey) && ev.key === 'c') {
+      const linkUrl = hoveredLink.href;
+      if (linkUrl !== null) {
+        GM_setClipboard(linkUrl);
       }
     }
   }

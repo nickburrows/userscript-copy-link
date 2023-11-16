@@ -4,11 +4,12 @@
 // @description 一個用來複製連結網址的userscript
 // @match       *://*/*
 // @inject-into content
-// @version     0.0.40
+// @version     0.0.44
 // @author      Nick Lin
 // @icon        https://raw.githubusercontent.com/nickburrows/userscript-copy-link/e8f248af59bea72aeb08ded7743765ac1d6801ef/static/icon_32.png
 // @updateURL   https://github.com/nickburrows/userscript-copy-link/raw/main/dist/index.user.js
 // @grant       GM.setClipboard
+// @grant       GM_setClipboard
 // ==/UserScript==
 
 (function () {
@@ -20,32 +21,20 @@ window.addEventListener('load', () => {
     passive: true
   };
   let hoveredLink = null;
-  function findNearestLink(element) {
-    if (!element) {
-      return null;
-    }
-    if (element.tagName === 'A') {
-      return element.href;
-    }
-    return findNearestLink(element.href);
-  }
   const linkElements = document.getElementsByTagName('a');
   for (const link of linkElements) {
-    link.addEventListener('mouseover', event => {
-      hoveredLink = findNearestLink(event.target);
+    link.addEventListener('mouseenter', () => {
+      hoveredLink = link;
     }, evOpts);
     link.addEventListener('mouseleave', () => {
       hoveredLink = null;
     }, evOpts);
   }
-  function eventKeyDown(event) {
-    const keyName = event.key;
-    if (keyName === 'Control' || keyName === 'Meta') {
-      return;
-    }
-    if (event.ctrlKey || event.metaKey) {
-      if (keyName === 'c' && hoveredLink !== null) {
-        GM.setClipboard(hoveredLink);
+  function eventKeyDown(ev) {
+    if (hoveredLink && (ev.metaKey || ev.ctrlKey) && ev.key === 'c') {
+      const linkUrl = hoveredLink.href;
+      if (linkUrl !== null) {
+        GM_setClipboard(linkUrl);
       }
     }
   }
